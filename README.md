@@ -1,5 +1,20 @@
-![Build](https://github.com/ioquake/ioq3/workflows/Build/badge.svg)
+# OpenArena Ioq3
 
+This is a fork of Ioquake3 for use with OpenArena. The goal is to provide players with an up-to-date engine designed for running OpenArena and its mods that minimizes installation time.
+
+## Not todo
+
+* Break backward compatibility with OA 0.8.8
+* Break backward compatibility with Q3A
+* Merge commits that make it difficult to keep up to date with Ioq3
+* Add features specific to one mod
+* Add features that should be done in game code
+
+If the feature makes the base game or another mod run poorly, then don't add it. However, if the feature can be utilized by all modders, then it may be worth adding.
+
+## Ioquake3
+
+```txt
                    ,---------------------------------------.
                    |   _                     _       ____  |
                    |  (_)___  __ _ _  _ __ _| |_____|__ /  |
@@ -8,46 +23,47 @@
                    |            |_|                        |
                    |                                       |
                    `--------- https://ioquake3.org --------'
+```
 
 The intent of this project is to provide a baseline Quake 3 which may be used
 for further development and baseq3 fun.
 Some of the major features currently implemented are:
 
-  * SDL 2 backend
-  * OpenAL sound API support (multiple speaker support and better sound
+* SDL 2 backend
+* OpenAL sound API support (multiple speaker support and better sound
     quality)
-  * Full x86_64 support on Linux
-  * VoIP support, both in-game and external support through Mumble.
-  * MinGW compilation support on Windows and cross compilation support on Linux
-  * AVI video capture of demos
-  * Much improved console autocompletion
-  * Persistent console history
-  * Colorized terminal output
-  * Optional Ogg Vorbis support
-  * Much improved QVM tools
-  * Support for various esoteric operating systems
-  * cl_guid support
-  * HTTP/FTP download redirection (using cURL)
-  * Multiuser support on Windows systems (user specific game data
+* Full x86_64 support on Linux
+* VoIP support, both in-game and external support through Mumble.
+* MinGW compilation support on Windows and cross compilation support on Linux
+* AVI video capture of demos
+* Much improved console autocompletion
+* Persistent console history
+* Colorized terminal output
+* Optional Ogg Vorbis support
+* Much improved QVM tools
+* Support for various esoteric operating systems
+* cl_guid support
+* HTTP/FTP download redirection (using cURL)
+* Multiuser support on Windows systems (user specific game data
     is stored in "%APPDATA%\Quake3")
-  * PNG support
-  * Many, many bug fixes
+* PNG support
+* Many, many bug fixes
 
 The map editor and associated compiling tools are not included. We suggest you
-use a modern copy from http://icculus.org/gtkradiant/.
+use a modern copy from <http://icculus.org/gtkradiant/>.
 
 The original id software readme that accompanied the Q3 source release has been
 renamed to id-readme.txt so as to prevent confusion. Please refer to the
 website for updated status.
 
 More documentation including a Player's Guide and Sysadmin Guide is on:
-http://wiki.ioquake3.org/
+<http://wiki.ioquake3.org/>
 
 If you've got issues that you aren't sure are worth filing as bugs, or just
 want to chat, please visit our forums:
-http://discourse.ioquake.org
+<http://discourse.ioquake.org>
 
-# Thank You:
+## Thank You
 
 <p>
   <a href="https://www.digitalocean.com/">Digital Ocean<br/>
@@ -67,18 +83,20 @@ http://discourse.ioquake.org
 <img src="http://icculus.org/icculus-org-now.png" width="300px"></a>
 </p>
 
-
-# Compilation and installation
+## Compilation and installation
 
 For *nix
+
   1. Change to the directory containing this readme.
   2. Run 'make'.
 
 For Windows,
+  
   1. Please refer to the excellent instructions here:
-     http://wiki.ioquake3.org/Building_ioquake3
+     <http://wiki.ioquake3.org/Building_ioquake3>
 
 For Mac OS X, building a Universal Binary
+
   1. Install MacOSX SDK packages from XCode.  For maximum compatibility,
      install MacOSX10.4u.sdk and MacOSX10.3.9.sdk, and MacOSX10.2.8.sdk.
   2. Change to the directory containing this README file.
@@ -87,6 +105,7 @@ For Mac OS X, building a Universal Binary
      /Applications/ioquake3 folder.
 
 Installation, for *nix
+
   1. Set the COPYDIR variable in the shell to be where you installed Quake 3
      to. By default it will be /usr/local/games/quake3 if you haven't set it.
      This is the path as used by the original Linux Q3 installer and subsequent
@@ -102,7 +121,7 @@ x86_64.
 The following variables may be set, either on the command line or in
 Makefile.local:
 
-```
+```txt
   CFLAGS               - use this for custom CFLAGS
   V                    - set to show cc command line when building
   DEFAULT_BASEDIR      - extra path to search for baseq3 and such
@@ -146,12 +165,11 @@ Makefile.local:
 
 The defaults for these variables differ depending on the target platform.
 
+## Console
 
-# Console
+### New cvars
 
-## New cvars
-
-```
+```txt
   cl_autoRecordDemo                 - record a new demo on each map change
   cl_aviFrameRate                   - the framerate to use when capturing video
   cl_aviMotionJpeg                  - use the mjpeg codec when capturing video
@@ -316,9 +334,9 @@ The defaults for these variables differ depending on the target platform.
                                       desktop resolution.
 ```
 
-## New commands
+### New commands
 
-```
+```txt
   video [filename]        - start video capture (use with demo command)
   stopvideo               - stop video capture
   stopmusic               - stop background music
@@ -360,17 +378,16 @@ The defaults for these variables differ depending on the target platform.
   addbot random           - the bot name "random" now selects a random bot
 ```
 
+## README for Developers
 
-# README for Developers
-
-## pk3dir
+### pk3dir
 
 ioquake3 has a useful new feature for mappers. Paths in a game directory with
 the extension ".pk3dir" are treated like pk3 files. This means you can keep
 all files specific to your map in one directory tree and easily zip this
 folder for distribution.
 
-## 64bit mods
+### 64bit mods
 
 If you wish to compile external mods as shared libraries on a 64bit platform,
 and the mod source is derived from the id Q3 SDK, you will need to modify the
@@ -393,7 +410,7 @@ typedef int intptr_t;
 Note if you simply wish to run mods on a 64bit platform you do not need to
 recompile anything since by default Q3 uses a virtual machine system.
 
-## Creating mods compatible with Q3 1.32b
+### Creating mods compatible with Q3 1.32b
 
 If you're using this package to create mods for the last official release of
 Q3, it is necessary to pass the commandline option '-vq3' to your invocation
@@ -401,7 +418,7 @@ of q3asm. This is because by default q3asm outputs an updated qvm format that
 is necessary to fix a bug involving the optimizing pass of the x86 vm JIT
 compiler.
 
-## Creating standalone games
+### Creating standalone games
 
 Have you finished the daunting task of removing all dependencies on the Q3
 game data? You probably now want to give your users the opportunity to play
@@ -418,7 +435,9 @@ If your answer to this question is "no", it probably makes no sense to build
 your own binaries. Instead, you can just use the pre-built binaries on the
 website. Just make sure the game is called with:
 
+```txt
     +set com_basegame <yournewbase>
+```
 
 in any links/scripts you install for your users to start the game. The
 binary must not detect any original quake3 game pak files. If this
@@ -429,20 +448,26 @@ If you want the engine to use a different directory in your homepath than
 e.g. "Quake3" on Windows or ".q3a" on Linux, then set a new name at startup
 by adding
 
+```txt
     +set com_homepath <homedirname>
+```
 
 to the command line. You can also control which game name to use when talking
 to the master server:
 
+```txt
     +set com_gamename <gamename>
+```
 
 So clients requesting a server list will only receive servers that have a
 matching game name.
 
 Example line:
 
+```txt
     +set com_basegame basefoo +set com_homepath .foo
     +set com_gamename foo
+```
 
 If you really changed parts that would make vanilla ioquake3 incompatible with
 your mod, we have included another way to conveniently build a stand-alone
@@ -450,7 +475,7 @@ binary. Just run make with the option BUILD_STANDALONE=1. Don't forget to edit
 the PRODUCT_NAME and subsequent #defines in qcommon/q_shared.h with
 information appropriate for your project.
 
-## Standalone game licensing
+### Standalone game licensing
 
 While a lot of work has been put into ioquake3 that you can benefit from free
 of charge, it does not mean that you have no obligations to fulfill. Please be
@@ -462,9 +487,11 @@ the game logic freely available to everyone. Furthermore, note that the "QIIIA
 Game Source License" prohibits distribution of mods that are intended to
 operate on a version of Q3 not sanctioned by id software:
 
+```txt
     "with this Agreement, ID grants to you the non-exclusive and limited right
     to distribute copies of the Software ... for operation only with the full
     version of the software game QUAKE III ARENA"
+```
 
 This means that if you're creating a standalone game, you cannot use said
 license on any portion of the product. As the only other license this code has
@@ -475,8 +502,7 @@ not prohibit commercial exploitation and all assets (e.g. textures, sounds,
 maps) created by yourself are your property and can be sold like every other
 game you find in stores.
 
-
-## PNG support
+### PNG support
 
 ioquake3 supports the use of PNG (Portable Network Graphic) images as
 textures. It should be noted that the use of such images in a map will
@@ -489,15 +515,19 @@ by ioquake3. To change this behaviour open the file 'q3.game' in the 'games'
 directory of the GtkRadiant base directory with an editor and change the
 line:
 
+```c
     texturetypes="tga jpg"
+```
 
 to
 
+```c
     texturetypes="tga jpg png"
+```
 
 Restart GtkRadiant and PNG textures are now available.
 
-## Building with MinGW for pre Windows XP
+### Building with MinGW for pre Windows XP
 
 IPv6 support requires a header named "wspiapi.h" to abstract away from
 differences in earlier versions of Windows' IPv6 stack. There is no MinGW
@@ -506,10 +536,9 @@ redistributable, so in its absence we're forced to require Windows XP.
 However if this header is acquired separately and placed in the qcommon/
 directory, this restriction is lifted.
 
+## Contributing
 
-# Contributing
-
-Please send all patches to bugzilla (https://bugzilla.icculus.org), or as a GitHub pull request and
+Please send all patches to bugzilla (<https://bugzilla.icculus.org>), or as a GitHub pull request and
 submit your patch there.
 
 The focus for ioq3 is to develop a stable base suitable for further development
@@ -518,58 +547,55 @@ and provide players with the same Quake 3 experience they've had for years.
 We do have graphical improvements with the new renderer, but they are off by default.
 See opengl2-readme.md for more information.
 
-# Building Official Installers
+## Building Official Installers
 
 We need help getting automated installers on all the platforms that ioquake3
 supports. We don't necessarily care about all the installers being identical,
 but we have some general guidelines:
 
-  * Please include the id patch pk3s in your installer, which are available
-    from http://ioquake3.org/patch-data/ subject to agreement to the id
-    EULA. Your installer shall also ask the user to agree to this EULA (which
-    is in the /web/include directory for your convenience) and subsequently
-    refuse to continue the installation of the patch pk3s and pak0.pk3 if they
-    do not.
+* Please include the id patch pk3s in your installer, which are available
+  from <http://ioquake3.org/patch-data/> subject to agreement to the id
+  EULA. Your installer shall also ask the user to agree to this EULA (which
+  is in the /web/include directory for your convenience) and subsequently
+  refuse to continue the installation of the patch pk3s and pak0.pk3 if they
+  do not.
 
-  * Please don't require pak0.pk3, since not everyone using the engine
-    plans on playing Quake 3 Arena on it. It's fine to (optionally) assist the
-    user in copying the file or tell them how.
+* Please don't require pak0.pk3, since not everyone using the engine
+  plans on playing Quake 3 Arena on it. It's fine to (optionally) assist the
+  user in copying the file or tell them how.
 
-  * It is fine to just install the binaries without requiring id EULA agreement,
-    providing pak0.pk3 and the patch pk3s are not referred to or included in the
-    installer.
+* It is fine to just install the binaries without requiring id EULA agreement,
+  providing pak0.pk3 and the patch pk3s are not referred to or included in the
+  installer.
 
-  * Please include at least a libSDL2 so/dylib/dll on every platform.
+* Please include at least a libSDL2 so/dylib/dll on every platform.
 
-  * Please include an OpenAL so/dylib/dll, since every platform should be using
-    it by now.
+* Please include an OpenAL so/dylib/dll, since every platform should be using
+  it by now.
 
-  * Please be prepared to alter your installer on the whim of the maintainers.
+* Please be prepared to alter your installer on the whim of the maintainers.
 
-  * Your installer will be mirrored to an "official" directory, thus making it
-    a done deal.
+* Your installer will be mirrored to an "official" directory, thus making it
+  a done deal.
 
-
-# Credits
+## Credits
 
 Maintainers
 
-  * James Canete <use.less01@gmail.com>
-  * Ludwig Nussel <ludwig.nussel@suse.de>
-  * Thilo Schulz <arny@ats.s.bawue.de>
-  * Tim Angus <tim@ngus.net>
-  * Tony J. White <tjw@tjw.org>
-  * Zachary J. Slater <zachary@ioquake.org>
-  * Zack Middleton <zturtleman@gmail.com>
+* James Canete <use.less01@gmail.com>
+* Ludwig Nussel <ludwig.nussel@suse.de>
+* Thilo Schulz <arny@ats.s.bawue.de>
+* Tim Angus <tim@ngus.net>
+* Tony J. White <tjw@tjw.org>
+* Zachary J. Slater <zachary@ioquake.org>
+* Zack Middleton <zturtleman@gmail.com>
 
 Significant contributions from
 
-  * Ryan C. Gordon <icculus@icculus.org>
-  * Andreas Kohn <andreas@syndrom23.de>
-  * Joerg Dietrich <Dietrich_Joerg@t-online.de>
-  * Stuart Dalton <badcdev@gmail.com>
-  * Vincent S. Cojot <vincent at cojot dot name>
-  * optical <alex@rigbo.se>
-  * Aaron Gyes <floam@aaron.gy>
-
-
+* Ryan C. Gordon <icculus@icculus.org>
+* Andreas Kohn <andreas@syndrom23.de>
+* Joerg Dietrich <Dietrich_Joerg@t-online.de>
+* Stuart Dalton <badcdev@gmail.com>
+* Vincent S. Cojot \<vincent at cojot dot name\>
+* optical <alex@rigbo.se>
+* Aaron Gyes <floam@aaron.gy>
