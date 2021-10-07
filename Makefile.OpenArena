@@ -1,0 +1,20 @@
+# Avoid making updates to this file unless you want to change defaults.
+# Create a Makefile.local which is ignored by git for your local overrides
+# that you don't want committed to git.
+
+# Defaults for OpenArena.  You shouldn't need to modify this section
+# This is only the client/server engine so we don't build the QVM here.
+BUILD_STANDALONE=1
+BUILD_CLIENT=1
+BUILD_SERVER=1
+BUILD_GAME_SO=0
+BUILD_GAME_QVM=0
+BUILD_BASEGAME=0
+BUILD_MISSIONPACK=0
+BUILD_RENDERER_OPENGL2=1
+BUILD_AUTOUPDATER=0
+
+CLIENTBIN=oa-ioquake3
+SERVERBIN=oa-ioq3ded
+BASEGAME=baseoa
+COPYDIR=/usr/local/games/openarena

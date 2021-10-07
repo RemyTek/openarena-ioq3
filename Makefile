@@ -47,6 +47,7 @@ endif
 # causing problems with keeping up to date with the repository.
 #
 #############################################################################
+-include Makefile.OpenArena
 -include Makefile.local
 
 ifeq ($(COMPILE_PLATFORM),cygwin)

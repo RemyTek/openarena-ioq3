@@ -3606,7 +3606,7 @@ void CL_Init( void ) {
 	Cvar_CheckRange(j_side_axis, 0, MAX_JOYSTICK_AXIS-1, qtrue);
 	Cvar_CheckRange(j_up_axis, 0, MAX_JOYSTICK_AXIS-1, qtrue);
 
-	cl_motdString = Cvar_Get( "cl_motdString", "", CVAR_ROM );
+	cl_motdString = Cvar_Get( "cl_motdString", "0", CVAR_ROM );
 
 	Cvar_Get( "cl_maxPing", "800", CVAR_ARCHIVE );
 

@@ -2,6 +2,8 @@
 
 This is a fork of Ioquake3 for use with OpenArena. The goal is to provide players with an up-to-date engine designed for running OpenArena and its mods that minimizes installation time.
 
+If you have a feature that you want in this engine, first check to see if it should be commited to Ioq3 instead. If it shouldn't be in Ioq3, then make an issue or pull request here.
+
 ## Not todo
 
 * Break backward compatibility with OA 0.8.8
